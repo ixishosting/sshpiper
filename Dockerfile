@@ -7,10 +7,10 @@ RUN apk update \
         && update-ca-certificates 2>/dev/null
 RUN apk add google-authenticator git gcc libc-dev linux-pam-dev
 
-ADD . /go/src/github.com/tg123/sshpiper/
+ADD . /go/src/github.com/ixishosting/sshpiper/
 ENV GO111MODULE=on
-WORKDIR /go/src/github.com/tg123/sshpiper/sshpiperd
-RUN go build -ldflags "$(/go/src/github.com/tg123/sshpiper/sshpiperd/ldflags.sh)" -tags pam -o /go/bin/sshpiperd
+WORKDIR /go/src/github.com/ixishosting/sshpiper/sshpiperd
+RUN go build -ldflags "$(/go/src/github.com/ixishosting/sshpiper/sshpiperd/ldflags.sh)" -tags pam -o /go/bin/sshpiperd
 
 
 FROM alpine:latest 
